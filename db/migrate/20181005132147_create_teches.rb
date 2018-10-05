@@ -6,6 +6,7 @@ class CreateTeches < ActiveRecord::Migration[5.2]
       t.integer :version
       t.text :desc
       t.string :logo
+      t.integer :user_id
 
       t.timestamps
     end
