@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static#landing'
   devise_for :users
-
+  resources :teches
   resources :users
 
   resources :teches do
