@@ -18,6 +18,7 @@ class TechesTest < ApplicationSystemTestCase
     fill_in "Desc", with: @tech.desc
     fill_in "Logo", with: @tech.logo
     fill_in "Technology", with: @tech.technology
+    fill_in "User", with: @tech.user_id
     fill_in "Version", with: @tech.version
     click_on "Create Tech"
 
@@ -33,6 +34,7 @@ class TechesTest < ApplicationSystemTestCase
     fill_in "Desc", with: @tech.desc
     fill_in "Logo", with: @tech.logo
     fill_in "Technology", with: @tech.technology
+    fill_in "User", with: @tech.user_id
     fill_in "Version", with: @tech.version
     click_on "Update Tech"
 

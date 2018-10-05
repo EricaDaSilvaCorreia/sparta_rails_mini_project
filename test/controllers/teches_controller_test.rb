@@ -17,7 +17,7 @@ class TechesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tech" do
     assert_difference('Tech.count') do
-      post teches_url, params: { tech: { date_created: @tech.date_created, desc: @tech.desc, logo: @tech.logo, technology: @tech.technology, version: @tech.version } }
+      post teches_url, params: { tech: { date_created: @tech.date_created, desc: @tech.desc, logo: @tech.logo, technology: @tech.technology, user_id: @tech.user_id, version: @tech.version } }
     end
 
     assert_redirected_to tech_url(Tech.last)
@@ -34,7 +34,7 @@ class TechesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tech" do
-    patch tech_url(@tech), params: { tech: { date_created: @tech.date_created, desc: @tech.desc, logo: @tech.logo, technology: @tech.technology, version: @tech.version } }
+    patch tech_url(@tech), params: { tech: { date_created: @tech.date_created, desc: @tech.desc, logo: @tech.logo, technology: @tech.technology, user_id: @tech.user_id, version: @tech.version } }
     assert_redirected_to tech_url(@tech)
   end
 
