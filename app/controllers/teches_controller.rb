@@ -69,6 +69,6 @@ class TechesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tech_params
-      params.require(:tech).permit(:technology, :date_created, :version, :desc, :logo)
+      params.require(:tech).permit(:technology, :date_created, :version, :desc, :logo, :user_id)
     end
 end
