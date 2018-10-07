@@ -5,21 +5,18 @@
     <li class="nav-item">
       <%= link_to 'Technology', teches_path, class:'nav-link' %>
     </li>
-
-    <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to 'User Profiles', users_path(@user), class:'nav-link' %>
-      </li>
-    <% end %>
   </ul>
 
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <a class="nav-link">User signed in as: <%= current_user.first_name %></a>
+        <li class="nav-item">
+          <%= image_tag current_user.prof_pic, class: 'img-responsive', height: '40px' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: 'nav-link' %>
+            <a class="nav-link"><%= current_user.first_name%></a>
+        </li>
+        <li class="nav-item active">
+          <%= link_to '| Profile |', user_path(current_user.id), class:'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
