@@ -31,6 +31,7 @@
   </p>
 
   <div class="container">
+    
       <ul class="list-group">
         <% @tech.comments.each do |comment| %>
         <li class="list-group-item">
@@ -38,7 +39,6 @@
         <h5><%= comment.user.fullname%></h5>
         <% end %>
           <%= comment.body %>
-          <br>
           <br>
           <%if user_signed_in? %>
             <% if  current_user.id ==
