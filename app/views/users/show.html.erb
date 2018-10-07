@@ -25,6 +25,21 @@
   <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Back', users_path %>
 
-  
+  <p>
+  <strong>Comments:</strong>
+  <% @user.comments.each do |comment|%>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <%= link_to tech_url(comment.tech_id) do %>
+        <h5><%= comment.tech.technology %></h5>
+      <% end %>
+      <p><%= comment.body %></p>
+      <br>
+      <small><%= link_to 'Edit Comment', edit_tech_comment_path(comment.tech_id, comment)%></small>
+      <small><%= link_to 'Delete Comment', tech_comment_path(comment.tech_id, comment), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+    </li>
+  </ul>
+  <% end %>
+</p>
 
 </div>

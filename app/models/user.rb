@@ -13,4 +13,8 @@ class User < ApplicationRecord
  validates :occupation, presence: true,format: {:with => /[a-zA-Z\-\_20%]+/}
  validates :dob, presence: true
  validates :prof_pic, presence: true
+
+ def fullname
+  "#{first_name} #{last_name}"
+end
 end

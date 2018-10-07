@@ -30,6 +30,32 @@
     <%= @tech.user_id %>
   </p>
 
+  <div class="container">
+      <ul class="list-group">
+        <% @tech.comments.each do |comment| %>
+        <li class="list-group-item">
+          <%= link_to user_url(comment.user_id, comment) do %>
+        <h5><%= comment.user.fullname%></h5>
+        <% end %>
+          <%= comment.body %>
+          <br>
+          <br>
+          <%if user_signed_in? %>
+            <% if  current_user.id ==
+              comment.user.id  %>
+              <small><%= link_to 'Edit Comment', edit_tech_comment_path(@tech,comment)%></small> |
+              <small><%= link_to 'Delete Comment', tech_comment_path(@tech, comment), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+            <% end %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+
+      <br>
+      <%= link_to 'New Comment', new_tech_comment_path(@tech) %>
+
+    </div>
+
   <%= link_to 'Edit', edit_tech_path(@tech) %> |
   <%= link_to 'Back', teches_path %>
 </div>
