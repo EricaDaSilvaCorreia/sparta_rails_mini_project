@@ -23,7 +23,7 @@
         <td><%= tech.date_created %></td>
         <td><%= tech.version %></td>
         <td><%= tech.desc %></td>
-        <td><%= tech.logo %></td>
+        <td><%= image_tag tech.logo, class: 'img-responsive', height: '50px' %></td>
         <td><%= tech.user_id %></td>
         <td><%= link_to 'Show', tech %></td>
         <td><%= link_to 'Edit', edit_tech_path(tech) %></td>
