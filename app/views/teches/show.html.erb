@@ -61,9 +61,10 @@
       <%if user_signed_in? %>
       <%= link_to 'New Comment', new_tech_comment_path(@tech) %>
     <% if  current_user.id ==
-      tech.user.id  %>
-  <%= link_to 'Edit', edit_tech_path(@tech) %> |
-  <%= link_to 'Back', teches_path %>
+      @tech.user.id  %>
+  <%= link_to 'Edit Tech', edit_tech_path(@tech) %> |
+  <%= link_to 'Back', teches_path %> |
+  <%= link_to 'Delete Tech', tech_path(@tech), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <% end %>
 </div>
