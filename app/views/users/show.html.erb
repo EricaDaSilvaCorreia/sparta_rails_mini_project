@@ -21,9 +21,12 @@
     <strong>Dob:</strong>
     <%= @user.dob %>
   </p>
-
+  <%if user_signed_in? %>
+  <% if  current_user.id ==
+    user.id  %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  <% end %>
+  <% end %>
 
 
   <p>
@@ -36,11 +39,17 @@
       <% end %>
       <p><%= comment.body %></p>
       <br>
+        <%if user_signed_in? %>
+        <% if  current_user.id ==
+          comment.user.id  %>
       <small><%= link_to 'Edit Comment', edit_tech_comment_path(comment.tech_id, comment)%></small>
       <small><%= link_to 'Delete Comment', tech_comment_path(comment.tech_id, comment), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+      <% end %>
+      <% end %>
     </li>
   </ul>
   <% end %>
 </p>
+
 
 </div>

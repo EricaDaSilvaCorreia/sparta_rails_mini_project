@@ -26,8 +26,13 @@
         <td><%= image_tag tech.logo, class: 'img-responsive', height: '50px' %></td>
         <td><%= tech.user_id %></td>
         <td><%= link_to 'Show', tech %></td>
+          <%if user_signed_in? %>
+        <% if  current_user.id ==
+          tech.user.id  %>
         <td><%= link_to 'Edit', edit_tech_path(tech) %></td>
         <td><%= link_to 'Destroy', tech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
