@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+<div class="img">
+  <%= image_tag @tech.logo, class: 'img-responsive', height: '250px' %>
+
+</div>
+
+
+  <p>
+    <strong>Technology:</strong>
+    <%= @tech.technology %>
+  </p>
+
+  <p>
+    <strong>Date created:</strong>
+    <%= @tech.date_created %>
+  </p>
+
+  <p>
+    <strong>Version:</strong>
+    <%= @tech.version %>
+  </p>
+
+  <p>
+    <strong>Desc:</strong>
+    <%= @tech.desc %>
+  </p>
+
+  <p>
+    <small>
+    <strong>Original Post By:</strong>
+    <%= @tech.user.fullname %>
+    </small>
+  </p>
+
+  <div class="container">
+
+      <ul class="list-group">
+        <% @tech.comments.each do |comment| %>
+        <li class="list-group-item">
+          <%= link_to user_url(comment.user_id, comment) do %>
+        <h5><%= comment.user.fullname%></h5>
+        <% end %>
+          <%= comment.body %>
+          <br>
+          <%if user_signed_in? %>
+            <% if  current_user.id ==
+              comment.user.id  %>
+              <small><%= link_to 'Edit Comment', edit_tech_comment_path(@tech,comment)%></small> |
+              <small><%= link_to 'Delete Comment', tech_comment_path(@tech, comment), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+            <% end %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+
+      <br>
+
+    </div>
+      <%if user_signed_in? %>
+      <%= link_to 'New Comment', new_tech_comment_path(@tech) %>
+    <% if  current_user.id ==
+      @tech.user.id  %>
+  <%= link_to 'Edit Tech', edit_tech_path(@tech) %> |
+  <%= link_to 'Back', teches_path %> |
+  <%= link_to 'Delete Tech', tech_path(@tech), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <% end %>
+</div>
